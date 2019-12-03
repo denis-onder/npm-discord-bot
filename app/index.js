@@ -32,7 +32,7 @@ const callerCallback = (err, data) => {
 
 client.on("ready", () => {
   console.log(`Logged in: ${client.user.tag}`);
-  client.user.setActivity(`out | ${keyword} help`, { type: "WATCHING" });
+  client.user.setActivity(`- ${keyword} help`, { type: "WATCHING" });
 });
 
 client.on("message", msgHandler);
