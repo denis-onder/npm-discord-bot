@@ -2,5 +2,5 @@ require("dotenv").config();
 
 module.exports = {
   token: process.env.TOKEN,
-  keyword: "'npm"
+  keyword: "!npm"
 };

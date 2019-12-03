@@ -5,16 +5,21 @@ const caller = require("./caller");
 const handler = require("./handler");
 
 const msgHandler = msg => {
-  const content = msg.content.toLowerCase();
+  const content = msg.cleanContent.toLowerCase();
   // Stop the bot from replying to itself.
   if (!msg.author.bot) {
     if (!content.startsWith(keyword)) {
       return;
     } else {
       // Strip the keyword from the message
-      const stripped = msg.toString().replace(`${keyword} `, "");
+      const stripped = msg
+        .toString()
+        .replace(`${keyword} `, "")
+        .split(" ")[0];
       // Handle the API call and scraper
-      caller(stripped, (err, data) => msg.reply(callerCallback(err, data)));
+      caller(stripped, (err, data) =>
+        msg.channel.send(callerCallback(err, data))
+      );
     }
   }
 };
@@ -27,7 +32,7 @@ const callerCallback = (err, data) => {
 
 client.on("ready", () => {
   console.log(`Logged in: ${client.user.tag}`);
-  client.user.setActivity("the coding mindgames.");
+  client.user.setActivity(`out | ${keyword} help`, { type: "WATCHING" });
 });
 
 client.on("message", msgHandler);
