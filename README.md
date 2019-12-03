@@ -4,6 +4,10 @@
 
 [Invite](https://discordapp.com/oauth2/authorize?client_id=651235796459716651&scope=bot) the bot to your server!
 
+### Usage:
+
+- `'npm <PACKAGE_NAME>`
+
 ### Running the bot in your local environment:
 
 First of all, run all the usual jazz, such as installing your Node dependencies using `npm install`. After that, you want to go ahead and head over to the [Discord Developer Portal](https://discordapp.com/developers/applications/) and create your bot. Then, acquire the bot token and application client ID. After you've done that, create a `.env` file in the root directory of the file structure, and add the token.
