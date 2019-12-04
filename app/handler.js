@@ -14,12 +14,15 @@ module.exports = val => {
     weeklyDownloads: html("p._9ba9a726").text() || "",
     lastPublish: html("time").text()
   };
-  return `\nhttps://npmjs.com/package/${data.name}\n${
-    data.desc
-  }\nWeekly Downloads: ${
-    data.weeklyDownloads
-  }\nLast Publish: ${data.lastPublish.substr(
-    0,
-    data.lastPublish.length / 2
-  )}\n${data.link}`;
+  return (
+    `https://npmjs.com/package/${data.name}` +
+    "\n```md\n" +
+    `\n${data.desc}\nWeekly Downloads: ${
+      data.weeklyDownloads
+    }\nLast Publish: ${data.lastPublish.substr(
+      0,
+      data.lastPublish.length / 2
+    )}\n\n${data.link}` +
+    "\n```\n"
+  );
 };
