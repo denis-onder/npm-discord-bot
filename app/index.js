@@ -1,6 +1,6 @@
 const { Client } = require("discord.js");
 const client = new Client();
-const { keyword, token } = require("./config");
+const { keyword, token, serverPort } = require("./config");
 const caller = require("./caller");
 const handler = require("./handler");
 
@@ -38,3 +38,8 @@ client.on("ready", () => {
 client.on("message", msgHandler);
 
 client.login(token);
+
+// Heroku port binding bypass
+require("http")
+  .createServer()
+  .listen(serverPort);
